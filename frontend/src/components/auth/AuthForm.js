@@ -59,12 +59,22 @@ const ButtonWithMarginTop = styled(Button)`
     margin-top: 1rem;
 `;
 
+/**
+ * 에러를 보여줍니다.
+ */
+const ErrorMessage = styled.div`
+    color: red;
+    text-align: center;
+    font-size: 0.875rem;
+    margin-top: 1rem;
+`;
+
 const textMap = {
     login: '로그인',
     register: '회원가입',
 }
 
-const AuthForm = ({ type, form, onChange, onSubmit }) => {
+const AuthForm = ({ type, form, onChange, onSubmit, error }) => {
 
     const text = textMap[type];
 
@@ -97,6 +107,7 @@ const AuthForm = ({ type, form, onChange, onSubmit }) => {
                         value={form.passwordConfirm}
                     />
                 )}
+                {error && <ErrorMessage>{error}</ErrorMessage>}
                 <ButtonWithMarginTop cyan fullWidth>{text}</ButtonWithMarginTop>
             </form>
             <Footer>

@@ -91,10 +91,19 @@ const auth = handleActions(
             authError: null,
             auth
         }),
-        [LOGIN_SUCCESS]: (state, {payload: error}) => ({
+        [REGISTER_FAILURE]: (state, {payload: error}) => ({
             ...state,
             authError: error,
         }),
+        [LOGIN_SUCCESS]: (state, {payload: auth}) => ({
+            ...state,
+            auth, 
+            authError: null,
+        }),
+        [LOGIN_FAILURE]: (state, {payload: error}) => ({
+            ...state,
+            authError: error,
+        })
     },
     initialState,
 );
